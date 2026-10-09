@@ -25,19 +25,43 @@ You need:
 - `adb` on your `PATH` (it ships with the Android SDK platform-tools)
 - A device with USB debugging enabled, or a saved logcat file
 
-Install from GitHub with [pipx](https://pipx.pypa.io/) (recommended, keeps it in its own environment):
+### One-line install (Linux and macOS)
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/mr-ceo7/adbcat/main/install.sh | sh
+```
+
+The script:
+
+- checks for Python 3.9+, the `venv` module and `adb`, and tells you how to fix anything missing
+- installs adbcat into its own environment in `~/.local/share/adbcat`, so no sudo is needed and system Python packages are untouched
+- links the `adbcat` command into `~/.local/bin`, and tells you if that folder isn't on your `PATH`
+
+Run the same command again to update. To uninstall:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/mr-ceo7/adbcat/main/install.sh | sh -s -- --uninstall
+```
+
+To read the script before running it:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/mr-ceo7/adbcat/main/install.sh -o install.sh
+less install.sh
+sh install.sh
+```
+
+### With pipx or pip
 
 ```sh
 pipx install git+https://github.com/mr-ceo7/adbcat.git
-```
-
-or with pip:
-
-```sh
+# or
 pip install git+https://github.com/mr-ceo7/adbcat.git
 ```
 
-Either way you get an `adbcat` command. To update later, run `pipx upgrade adbcat` or `pip install --upgrade git+https://github.com/mr-ceo7/adbcat.git`.
+To update, run `pipx upgrade adbcat` or `pip install --upgrade git+https://github.com/mr-ceo7/adbcat.git`.
+
+The installer has been tested on Linux. On Windows, use pip.
 
 ## Quick start
 
@@ -201,6 +225,7 @@ pytest
 | `adbcat/screens.py` | dialogs: devices, buffers, columns, saved filters, export, help |
 | `scripts/demo_log.py` | synthetic log for demos and screenshots |
 | `scripts/screenshots.py` | regenerates `docs/*.svg` |
+| `install.sh` | the one-line installer |
 
 ## License
 
